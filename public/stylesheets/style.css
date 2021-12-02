@@ -149,6 +149,10 @@ section label, section h2 {
   line-height: 150%;
 }
 
+ol {
+  list-style: none;
+}
+
 .post .title span {
   font-style: italic;
   font-size: 90%;
@@ -170,15 +174,15 @@ section label, section h2 {
 }
 
 .comment:nth-child(odd) {
-  background-color: #fff5eb;
+  background-color: #d7f8ed;
+  
 }
 
 .comment .meta {
   font-size: 90%;
   margin-bottom: .5%;
-  opacity: .6;
+  opacity: .8;
 }
-
 .meta {
   background-color:rgb(35,16,16);
   color: rgb(157, 156, 158);
@@ -186,6 +190,11 @@ section label, section h2 {
   padding: 1%;
   position: relative;
 
+}
+
+.comment_colors {
+  background-color:rgb(27, 38, 63);
+  color: rgb(255, 255, 255);
 }
 
 .meta p {  
