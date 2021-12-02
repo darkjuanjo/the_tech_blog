@@ -107,6 +107,17 @@ main {
   background-color: rgb(217,234,211);
 }
 
+section.signup {
+  background-color:rgb(35,16,16);
+  width:40%;
+  padding: 1%;
+  border-radius: 18px;
+}
+
+section label, section h2 {
+  color:rgb(217,234,211);
+}
+
 .btn-no-style {
   background: none;
   border: none;
@@ -149,15 +160,6 @@ main {
   margin: -1.5% 0 2% 0;
 }
 
-.upvote-btn {
-  background-color: #197d0f;
-  transition: background-color .1s;
-}
-
-.upvote-btn:hover {
-  background-color: #1f9c13;
-}
-
 .comment-form {
   margin-bottom: 5%;
 }
@@ -175,6 +177,33 @@ main {
   font-size: 90%;
   margin-bottom: .5%;
   opacity: .6;
+}
+
+.meta {
+  background-color:rgb(35,16,16);
+  color: rgb(157, 156, 158);
+  font-size: 1.5em;
+  padding: 1%;
+  position: relative;
+
+}
+
+.meta p {  
+  margin:0;
+  margin-right: 50%;
+}
+
+.meta span {
+  position: absolute;
+  left: 65%;
+}
+
+.post_content {
+  font-size: 1.5em;
+  border: 5px solid rgb(35,16,16);
+  color: rgb(35,16,16);
+  padding: 1% 0;
+  
 }
 
 .new-post-form input {

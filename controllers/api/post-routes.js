@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Post, User, Vote, Comment } = require('../../models');
+const { Post, User, Comment } = require('../../models');
 const sequelize = require('../../config/connection');
 const withAuth = require('../../utils/auth');
 
@@ -12,7 +12,6 @@ router.get('/', (req, res) => {
       'post_url',
       'title',
       'created_at',
-      [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
     ],
     include: [
       // include the Comment model here:
@@ -47,7 +46,6 @@ router.get('/', (req, res) => {
         'post_url',
         'title',
         'created_at',
-        [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
       ],
       include: [
         // include the Comment model here:
@@ -80,9 +78,10 @@ router.get('/', (req, res) => {
     // expects {title: 'Taskmaster goes public!', post_url: 'https://taskmaster.com/press', user_id: 1}
   router.post('/', withAuth, (req, res) => {
     // expects {title: 'Taskmaster goes public!', post_url: 'https://taskmaster.com/press', user_id: 1}
+    console.log(req);
     Post.create({
       title: req.body.title,
-      post_url: req.body.post_url,
+      post_text: req.body.post_text,
       user_id: req.session.user_id
     })
       .then(dbPostData => res.json(dbPostData))
@@ -91,20 +90,6 @@ router.get('/', (req, res) => {
         res.status(500).json(err);
       });
   });
-
-// PUT /api/posts/upvotecd
-router.put('/upvote', withAuth, (req, res) => {
-  // make sure the session exists first
-  if (req.session) {
-    // pass session id along with all destructured properties on req.body
-    Post.upvote({ ...req.body, user_id: req.session.user_id }, { Vote, Comment, User })
-      .then(updatedVoteData => res.json(updatedVoteData))
-      .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-      });
-  }
-});
 
   router.put('/:id', withAuth, (req, res) => {
     Post.update(
