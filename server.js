@@ -9,7 +9,7 @@ const helpers = require('./utils/helpers');
 const hbs = exphbs.create({helpers});
 const sess = {
   secret: 'Super secret secret',
-  cookie: {},
+  cookie: { expires: 10 * 60 * 1000 }, //session will expire in 10 minutes
   resave: false,
   saveUninitialized: true,
   store: new SequelizeStore({

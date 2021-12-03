@@ -225,6 +225,8 @@ ol {
 
 footer {
   border-top: 1px solid #ccc;
+  background-color:rgb(35,16,16);
+  color:rgb(217,234,211);
   display: flex;
   justify-content: center;
   padding: 1%;
