@@ -69,7 +69,7 @@ router.get('/edit/:id', withAuth, (req, res) => {
       ]
     })
       .then(dbPostData => {
-        // console.log(dbPostData[0].dataValues);
+
         // serialize data before passing to template
         const posts = dbPostData.map(post => {
            return post.get({ plain: true });
